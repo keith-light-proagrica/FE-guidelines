@@ -96,10 +96,6 @@ Could be easier to read with each transition property being on its own line
 
 Sometimes it's still better to KISS (Keep It Simple, Stupid) than DRY.
 
----
-
-## Declarations
-
 ## IDs
 
 ![don't](https://i.imgflip.com/2wgxip.png)
@@ -191,7 +187,7 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
   display: flex;
   padding: 0;
 
-  // Pseudo-element
+  // Pseudo-elements
   &::before {
     content: '';
   }
@@ -247,16 +243,17 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
 
 ---
 
-### WIP - This section requires a lot of discussion/workshops
+### WIP - This section requires discussion/workshops
 
 -   inline or at the bottom/different file
 -   mobile first or desktop down (design dependent)
 -   using breakpoints or static values (or both)
 -   adaptive rather than fluid width (container jumps down in size)
+-   should we be using tailwind style mediaqueries for utilities? EG `.u-text-center:md`?
 
 ---
 
-## Pseudo-elements & -selectors
+## Pseudo-elements & pseudo-selectors
 
 ### Don't
 
@@ -366,10 +363,10 @@ Common properties that benefit from variables are:
 ```
 $red: RED;
 
-// or
+// Or
 $red: #FF0000;
 
-// or
+// Or
 $red: hsl(0, 100%, 50%);
 ```
 
@@ -379,11 +376,11 @@ $red: hsl(0, 100%, 50%);
 $red: #ff0000;
 $cornflower-blue: #6195ed;
 
-// or
+// Or
 $red: rgb(255, 0, 0);
 $cornflower-blue: rgb(97, 149, 237);
 
-// or
+// Or
 $red: rgba(255, 0, 0, 0.5);
 $cornflower-blue: rgba(97, 149, 237, 0.5);
 ```
@@ -398,7 +395,7 @@ $cornflower-blue: rgba(97, 149, 237, 0.5);
 
 ---
 
-### WIP - This section requires a lot of discussion/workshops
+### WIP - This section requires discussion/workshops
 
 -   https://cssguidelin.es/#bem-like-naming
 -   https://github.com/we-make-websites/wmw-coding-guidelines/blob/master/css/README.md#bem-&-css
@@ -439,7 +436,7 @@ Let's say you have a button inside a header component which inherits a lot of ge
 
 .header__button {}
 
-// or
+// Or
 .header .button {}
 ```
 
@@ -515,7 +512,7 @@ We can write modifiers in a few ways, but this is the recommended way:
   &--modifier .block__element {}
 }
 
-// or
+// Or
 
 .block {
   &__element {}
@@ -526,13 +523,13 @@ We can write modifiers in a few ways, but this is the recommended way:
 
 Here we have a block and element where we will want to modify the elements styles. Following our [property order](#property-order) rules the modifier should be at the bottom.
 
-Using `&#{&}--` adds a level of specificity to the declaration.
+Using `&#{&}--` adds a level of specificity to the declaration but this is not needed if ordered correctly.
 
 ## Utility classes
 
 ---
 
-### WIP - This section requires a lot of discussion/workshops
+### WIP - This section requires discussion/workshops
 
 https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/
 

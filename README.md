@@ -134,6 +134,35 @@ Sometimes it's still better to KISS (Keep It Simple, Stupid) than DRY.
 
 Sometimes you may have to use ID because you're working with apps or code you can't otherwise edit. In this case, and only as a last resort, use IDs. (see examples above)
 
+## `!important`
+
+### Don't
+
+```
+.foo {
+  color: red !important;
+}
+```
+
+-   Never use !important if it can be avoided
+-   Add inline comments above the property explaining why if you have to use !important
+
+### Exceptions
+
+-   Sometimes using 3rd party code/libraries you have to override their specific styles using `!important`. However consider doubling specificity (see example below)
+-   Utility classes are very specific so could use `!important`
+
+### Doubling Specificity
+
+```
+.foo.foo {
+// This style will override .foo styles
+}
+```
+
+-   This works because it's more specific than just the class name once, but won't override inline styles
+-   Document any oddities
+
 ## Longhand properties
 
 ### Don't

@@ -210,8 +210,8 @@ By setting `background: red;` we actually get the following properties set (in c
   background-color: red;
 }
 ```
-As shown this is doing a lot more than just setting a `background-color` so try to use longhand declarations
 
+This is doing a lot more than just setting the intended `background-color` property so try to use longhand declarations where possible.
 
 ### Exceptions
 

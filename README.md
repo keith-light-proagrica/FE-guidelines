@@ -192,6 +192,27 @@ Sometimes you may have to use ID because you're working with apps or code you ca
 -   For these properties the non-described properties automatically are set to none/default/0 which causes issues
 -   The code is more verbose when making responsive changes
 
+### Non-described properties
+
+By setting `background: red;` we actually get the following properties set (in chrome)
+
+```
+.foo {
+  background-image: initial;
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
+  background-repeat-x: initial;
+  background-repeat-y: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: red;
+}
+```
+As shown this is doing a lot more than just setting a `background-color` so try to use longhand declarations
+
+
 ### Exceptions
 
 Feel free to use shorthand properties for `margin`, `padding`, `border`, and `transform`.

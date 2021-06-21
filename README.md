@@ -36,7 +36,7 @@
 -   Properties and values on the same line
 -   space after property-value delimiting colon (`:`)
 -   Each declaration on its own line
--   Closing bracket on its own line
+-   Closing bracket on its own line (`}`)
 -   Each declaration indented by 2 spaces
 -   Trailing semi-colon at the end of each declaration
 -   Properties ordered A-Z (easier to read)
@@ -87,7 +87,7 @@ Could be easier to read with each transition property being on its own line
 }
 ```
 
--   Keep things DRY, aim to use standard classes to so you can re-use your code
+-   Keep things DRY, aim to use standard classes so you can re-use your code
 -   SASS includes and extends can encourage poor coding practice, just because it's one line in your code doesn't mean it is when exported
 -   If you're applying the same include or styles on lots of selectors, create a class and apply it in HTML to keep things DRY
 -   This is where defined h1, h2, p etc. in Photoshop/XD files would be really useful so we can establish reuseable styles
@@ -111,6 +111,7 @@ Sometimes it's still better to KISS (Keep It Simple, Stupid) than DRY.
 ### Do
 
 ```
+// Use classes
 .foo {
   background-color: #000;
 }
@@ -176,10 +177,11 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
   $local-variables: 1rem;
 
   // Extends
-  @extend .grid;
+  @extend %button;
 
   // Includes
-  @include transition(0.5s);
+  @include grid();
+  @include column(6);
 
   // Properties in alphabetical order
   background-color: transparent;

@@ -606,3 +606,62 @@ Utility classes are single responsibility rules for a specific task. They should
 ```
 
 These are highly specific rules and should be used sparingly. Due to their targeted rules you could use `!important`
+
+## Javascript
+
+As a general rule it is a bad idea to bind styles and javascript hooks in your HTML. This is because you cannot remove one without affecting the other and by looking at the HTML you may not even be aware of the connection.
+
+### Don't
+
+```
+// Don't use CSS classes to bind JS hooks
+<a class="foo" href="#">Trigger JS (class)</a>
+
+const triggerJS_class = document.querySelectorAll(".foo");
+
+if (triggerJS_class) {
+  triggerJS_class.forEach((item) => {
+    item.addEventListener("click", () => {
+      console.log("class worked");
+    });
+  });
+}
+
+// Don't use IDs
+<a class="bar" id="foo" href="#">Trigger JS (class)</a>
+
+const triggerJS_id = document.querySelectorAll("#foo");
+
+if (triggerJS_id) {
+  triggerJS_id.forEach((item) => {
+    item.addEventListener("click", () => {
+      console.log("id worked");
+    });
+  });
+}
+```
+
+### Do
+
+```
+// Use `js-` prefixed custom attributes
+<a class="foo" href="#" js-click="trigger-js">Trigger JS</a>
+
+const triggerJS_attribute = document.querySelectorAll('[js-click="trigger-js"]');
+
+if (triggerJS_attribute) {
+  triggerJS_attribute.forEach((item) => {
+    item.addEventListener("click", () => {
+      console.log("attribute worked");
+    });
+  });
+}
+```
+
+- Separate styles from hooks
+- Don't use IDs (not reusable)
+- Easily identify JS functionality in HTML
+
+ A common practice is to use `data-` attributes as JS hooks but these are meant to store data. So try to avoid using them.
+
+ **NOTE - the use of `.js-` classes is also fine. Just don't bind any styles to them**

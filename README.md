@@ -116,7 +116,7 @@ Sometimes it's still better to KISS (Keep It Simple, Stupid) than DRY.
   background-color: #000;
 }
 
-// If you want to have a unique identifier for some reason then use this (even though its ugly).
+// If you want to have a unique identifier the you could use something like this (even though its ugly)
 .\#foo {
   background-color: #000;
 }
@@ -156,12 +156,12 @@ Sometimes you may have to use ID because you're working with apps or code you ca
 
 ```
 .foo.foo {
-// This style will override .foo styles
+// This style will override `.foo` styles
 }
 ```
 
 -   This works because it's more specific than just the class name once, but won't override inline styles
--   Document any oddities
+-   Consider using BEM modifiers where possible. Document any oddities with inline comments
 
 ## Longhand properties
 
@@ -573,9 +573,8 @@ We can write modifiers in a few ways, but this is the recommended way:
 }
 ```
 
-Here we have a block and element where we will want to modify the elements styles. Following our [property order](#property-order) rules the modifier should be at the bottom.
-
-Using `&#{&}--` adds a level of specificity to the declaration but this is not needed if ordered correctly.
+-   Here we have a block and element where we will want to modify the elements styles. Following our [property order](#property-order) rules the modifier should be at the bottom.
+-   Using `&#{&}--` adds a level of specificity to the declaration but this is not needed if ordered correctly.
 
 ## Utility classes
 
@@ -605,7 +604,9 @@ Utility classes are single responsibility rules for a specific task. They should
 }
 ```
 
-These are highly specific rules and should be used sparingly. Due to their targeted rules you could use `!important`
+-   These are highly specific rules and should be used sparingly.
+-   Due to their targeted rules you could use `!important`
+-   Utilities should be abstracted, reusable and not at risk of becoming out of date (EG `.red` may change to `.blue` but `.highlight` will likely remain the same).
 
 ## Javascript
 
@@ -658,10 +659,10 @@ if (triggerJS_attribute) {
 }
 ```
 
-- Separate styles from hooks
-- Don't use IDs (not reusable)
-- Easily identify JS functionality in HTML
+-   Separate styles from hooks
+-   Don't use IDs (not reusable)
+-   Easily identify JS functionality in HTML
 
- A common practice is to use `data-` attributes as JS hooks but these are meant to store data. So try to avoid using them.
+A common practice is to use `data-` attributes as JS hooks but these are meant to store data. So try to avoid using them.
 
- **NOTE - the use of `.js-` classes is also fine. Just don't bind any styles to them**
+**NOTE - the use of `.js-` classes is also fine. Just don't bind any styles to them**

@@ -271,6 +271,11 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
     width: 100%;
   }
 
+  // Stateful namespaces
+  &.is-open {
+    display: block;
+  }
+
   // Parents
   .parent & {
     display: none;
@@ -287,7 +292,8 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
 7. Direct descendants (> .baz, + .baz)
 8. Pseudo-selectors (&:hover), this way they can change nested elements
 9. Modifiers (&--big), this gives them precedence over all nested elements
-10. Parents (.parent &), so that they have the greatest priority
+10. Stateful namespaces for temporary states of interactivity (`.is-active`, `.is-open` etc)
+11. Parents (.parent &), so that they have the greatest priority
 
 **NOTE - no need to add vendor prefixes as this should be done with a build tool (GULP, webpack etc)**
 
@@ -368,7 +374,36 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
 -   Don't specify units on zero length values (eg `0px` should be `0`)
 -   Add a leading zero for decimal places
 -   Don't go to more than three decimal places, the fewer the better (some browsers do not read more than 2 decimal places anyway)
--   include parenthesise on mixins regardless if there are no arguments
+-   Wrap calculations in brackets (`(100% / 3)`)
+-   Include parenthesise on mixins regardless if there are no arguments
+
+## Magic numbers
+
+### Don't
+
+```
+.foo {
+  left: 23px;
+}
+```
+
+### Do
+
+```
+.foo {
+  // 10px because of font height
+  left: ($$gutter-width - 10px - ($nav-height / 2));
+}
+
+.foo {
+  // This values matches the sum of widths above it
+  left: 23px;
+}
+```
+
+-   Avoid using "magic numbers" that "just work"
+-   Use calculations based on existing values (or variables)
+-   If you have to set a value then add a comment explaining why this number "just works"
 
 ## Variables
 
@@ -607,6 +642,19 @@ Utility classes are single responsibility rules for a specific task. They should
 -   These are highly specific rules and should be used sparingly.
 -   Due to their targeted rules you could use `!important`
 -   Utilities should be abstracted, reusable and not at risk of becoming out of date (EG `.red` may change to `.blue` but `.highlight` will likely remain the same).
+
+## Stateful Namespaces
+
+```
+.is-open {}
+.is-expanded {}
+.is-active {}
+```
+
+When dealing with an interactive element use stateful namespaces. This could be a `BEM-modifier` but if it is only a temporary state it is not really a modifier.
+
+-   States are very temporary
+-   Ensure that States are easily noticed and understood in our HTML
 
 ## Javascript
 

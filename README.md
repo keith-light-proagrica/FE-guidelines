@@ -283,17 +283,17 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
 }
 ```
 
-1. Local variables ($local_margin)
-2. Extends (@extend %grid)
-3. Includes (@include grid())
-4. Properties (background-color)
-5. Pseudo-elements (&::before, &::placeholder etc.)
-6. Nested elements (&\_\_bar)
-7. Direct descendants (> .baz, + .baz)
-8. Pseudo-selectors (&:hover), this way they can change nested elements
-9. Modifiers (&--big), this gives them precedence over all nested elements
+1. Local variables (`$local_margin`)
+2. Extends (`@extend %grid`)
+3. Includes (`@include grid()`)
+4. Properties (`background-color`)
+5. Pseudo-elements (`&::before`, `&::placeholder` etc.)
+6. Nested elements (`&__bar`)
+7. Direct descendants (`> .baz`, `+ .baz`)
+8. Pseudo-selectors (`&:hover`), this way they can change nested elements
+9. Modifiers (`&--big`), this gives them precedence over all nested elements
 10. Stateful namespaces for temporary states of interactivity (`.is-active`, `.is-open` etc)
-11. Parents (.parent &), so that they have the greatest priority
+11. Parents (`.parent &`), so that they have the greatest priority
 
 **NOTE - no need to add vendor prefixes as this should be done with a build tool (GULP, webpack etc)**
 
@@ -366,8 +366,8 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
 -   Put spaces between the values and the mathematical operators
 -   Put multiplying and dividing values after the starting value
 -   Use lowercase for selectors and properties
--   Use `//` for commenting not the block level `/* */`
--   Inline comments should start on a new line preceding the property they're describing
+-   Use `//` for inline commenting not the block level `/* */`
+-   Inline comments should start on a new line preceding the property/issue they're describing
 -   Use sentence case for your comments
 -   Do not end with a full stop
 -   Specify units on zero duration times
@@ -375,7 +375,7 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
 -   Add a leading zero for decimal places
 -   Don't go to more than three decimal places, the fewer the better (some browsers do not read more than 2 decimal places anyway)
 -   Wrap calculations in brackets (`(100% / 3)`)
--   Include parenthesise on mixins regardless if there are no arguments
+-   Include parentheses on mixins regardless if there are no arguments
 
 ## Magic numbers
 
@@ -448,22 +448,24 @@ Common properties that benefit from variables are:
 ### Don't
 
 ```
+// Don't use system colours
 $red: RED;
 
-// Or
+// Don't use uppercase HEX
 $red: #FF0000;
 
-// Or
+// Don't use hsl (difficult to read)
 $red: hsl(0, 100%, 50%);
 ```
 
 ### Do
 
 ```
+// Use lowercase HEX colours
 $red: #ff0000;
 $cornflower-blue: #6195ed;
 
-// Or
+// Use
 $red: rgb(255, 0, 0);
 $cornflower-blue: rgb(97, 149, 237);
 
@@ -476,6 +478,7 @@ $cornflower-blue: rgba(97, 149, 237, 0.5);
 -   If you have two or more colours similar enough to share the same name then suffix them with a number where the 1 is the darkest variant of the colour
 -   HEX colours should be written in lowercase as it is easier to read
 
+**NOTE - if using rgba colours maybe use original colour name EG `$black-rgba-5: rgba($black, .5)`**
 **NOTE - maybe decide if we use all HEX or all rgb/rgba**
 
 ## BEM
@@ -519,8 +522,6 @@ Let's say you have a button inside a header component which inherits a lot of ge
 
 ```
 // modified inside the header - BAD
-.button {}
-
 .header__button {}
 
 // Or
@@ -609,7 +610,7 @@ We can write modifiers in a few ways, but this is the recommended way:
 ```
 
 -   Here we have a block and element where we will want to modify the elements styles. Following our [property order](#property-order) rules the modifier should be at the bottom.
--   Using `&#{&}--` adds a level of specificity to the declaration but this is not needed if ordered correctly.
+-   Using `&#{&}--` adds a level of specificity to the declaration but this is not needed if properties are ordered correctly.
 
 ## Utility classes
 
@@ -641,7 +642,7 @@ Utility classes are single responsibility rules for a specific task. They should
 
 -   These are highly specific rules and should be used sparingly.
 -   Due to their targeted rules you could use `!important`
--   Utilities should be abstracted, reusable and not at risk of becoming out of date (EG `.red` may change to `.blue` but `.highlight` will likely remain the same).
+-   Utilities should be abstracted, reusable and not at risk of becoming out of date (EG `.red` may change to `.blue` but `.u-highlight` will likely remain the same).
 
 ## Stateful Namespaces
 
@@ -658,7 +659,7 @@ When dealing with an interactive element use stateful namespaces. This could be 
 
 ## Javascript
 
-As a general rule it is a bad idea to bind styles and javascript hooks in your HTML. This is because you cannot remove one without affecting the other and by looking at the HTML you may not even be aware of the connection.
+As a general rule, it is a bad idea to bind styles and javascript hooks in your HTML. This is because you cannot remove one without affecting the other and by looking at the HTML you may not even be aware of the connection.
 
 ### Don't
 

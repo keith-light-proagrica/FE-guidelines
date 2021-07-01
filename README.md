@@ -156,7 +156,7 @@ Sometimes you may have to use ID because you're working with apps or code you ca
 
 ```
 .foo.foo {
-// This style will override `.foo` styles
+  // This style will override `.foo` styles
 }
 ```
 
@@ -480,6 +480,7 @@ $cornflower-blue: rgba(97, 149, 237, 0.5);
 -   HEX colours should be written in lowercase as it is easier to read
 
 **NOTE - if using rgba colours maybe use original colour name EG `$black-rgba-5: rgba($black, .5)`**
+
 **NOTE - maybe decide if we use all HEX or all rgb/rgba**
 
 ## BEM

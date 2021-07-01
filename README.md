@@ -308,6 +308,7 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
 -   using breakpoints or static values (or both)
 -   adaptive rather than fluid width (container jumps down in size)
 -   should we be using tailwind style mediaqueries for utilities? EG `.u-text-center:md`?
+-   or potentially using `.u-text-center@md`?
 
 ---
 

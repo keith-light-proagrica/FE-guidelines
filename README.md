@@ -417,7 +417,7 @@ Common properties that benefit from variables are:
 -   font-family
 -   font-weight
 -   margin (gutters, grid gutters)
--   transition (duration, easing) – consider a mixin
+-   transition (duration, easing)
 
 **NOTE - this may (well should) be built into our FE framework**
 

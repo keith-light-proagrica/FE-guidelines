@@ -25,9 +25,9 @@
 ```
 .foo,
 .bar {
-  display: block;
   background-color: green;
   color: red;
+  display: block;
 }
 ```
 

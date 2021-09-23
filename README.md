@@ -144,13 +144,13 @@ Sometimes you may have to use ID because you're working with apps or code you ca
 }
 ```
 
--   Never use !important if it can be avoided
--   Add inline comments above the property explaining why if you have to use !important
+-   Never use `!important` if it can be avoided
+-   Add inline comments above the property explaining why if you have to use `!important`
 
 ### Exceptions
 
 -   Sometimes using 3rd party code/libraries you have to override their specific styles using `!important`. However consider doubling specificity (see example below)
--   Utility classes are very specific so could use `!important`
+-   Utility classes are single responsibility and very specific so could use `!important`
 
 ### Doubling Specificity
 
@@ -289,11 +289,12 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
 4. Properties (`background-color`)
 5. Pseudo-elements (`&::before`, `&::placeholder` etc.)
 6. Nested elements (`&__bar`)
-7. Direct descendants (`> .baz`, `+ .baz`)
-8. Pseudo-selectors (`&:hover`), this way they can change nested elements
-9. Modifiers (`&--big`), this gives them precedence over all nested elements
-10. Stateful namespaces for temporary states of interactivity (`.is-active`, `.is-open` etc)
-11. Parents (`.parent &`), so that they have the greatest priority
+7. Direct descendants (`> .baz`)
+8. Sibling selectors (`+ .baz`, `~ .bam`)
+9. Pseudo-selectors (`&:hover`), this way they can change nested elements
+10. Modifiers (`&--big`), this gives them precedence over all nested elements
+11. Stateful namespaces for temporary states of interactivity (`.is-active`, `.is-open` etc)
+12. Parents (`.parent &`), so that they have the greatest priority
 
 **NOTE - no need to add vendor prefixes as this should be done with a build tool (GULP, webpack etc)**
 
@@ -307,8 +308,7 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
 -   mobile first or desktop down (design dependent)
 -   using breakpoints or static values (or both)
 -   adaptive rather than fluid width (container jumps down in size)
--   should we be using tailwind style mediaqueries for utilities? EG `.u-text-center:md`?
--   or potentially using `.u-text-center@md`?
+-   should we be using tailwind style mediaqueries for utilities? EG `.u-text-center:md` or `.u-text-center@md`?
 
 ---
 
@@ -363,7 +363,7 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
 ```
 
 -   Include a doc-block/intro-block if necessary to explain anything not self documenting or hacky
--   Wrap calculations in brackets for readability
+-   Wrap calculations in brackets for readability (`left: calc(100% - (#{$gutter-width} * 2));`)
 -   Put spaces between the values and the mathematical operators
 -   Put multiplying and dividing values after the starting value
 -   Use lowercase for selectors and properties
@@ -375,7 +375,6 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
 -   Don't specify units on zero length values (eg `0px` should be `0`)
 -   Add a leading zero for decimal places
 -   Don't go to more than three decimal places, the fewer the better (some browsers do not read more than 2 decimal places anyway)
--   Wrap calculations in brackets (`(100% / 3)`)
 -   Include parentheses on mixins regardless if there are no arguments
 
 ## Magic numbers
@@ -412,7 +411,7 @@ When first setting up your project you should go through and define a series of 
 
 Common properties that benefit from variables are:
 
--   border-radius
+-   border-radius/ border-width
 -   color
 -   font-family
 -   font-weight

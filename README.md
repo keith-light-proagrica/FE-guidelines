@@ -619,7 +619,9 @@ We can write modifiers in a few ways, but this is the recommended way:
 
 ### WIP - This section requires discussion/workshops
 
-https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/
+- https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/
+- HTML naming
+- Descriptive naming
 
 ---
 

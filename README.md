@@ -312,6 +312,71 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
 
 ---
 
+## Nesting
+
+### Don't
+
+```
+.foo {
+    .this {
+        .is {
+            .very {
+                .bad {
+                }
+            }
+        }
+    }
+
+    @media (max-width: 700px) {
+        .this .is .very .bad {
+        }
+    }
+}
+```
+
+### Do
+
+```
+.foo {
+    // Base level (not included)
+
+    &__bar {
+        // Level one
+
+        &:hover {
+            // Level two
+
+            &.bar {
+                // Level three
+            }
+        }
+    }
+}
+
+@media (min-width: 700px) {
+    // Base level (not included)
+
+    &__bar {
+        // Level one
+
+        &:hover {
+            // Level two
+
+            &.bar {
+                // Level three
+            }
+        }
+    }
+}
+```
+
+-   Don't nest more than 3 levels
+-   Requires an even more specific selector to override it
+-   Mounts up to a significant maintenance issue
+-   This does mean that you can't always nest properties the way you normally would
+-   Media queries are not included when counting levels of nesting
+-   Keep media queries at the bottom of the file (or in a separate file)
+
 ## Pseudo-elements & pseudo-selectors
 
 ### Don't
@@ -619,9 +684,9 @@ We can write modifiers in a few ways, but this is the recommended way:
 
 ### WIP - This section requires discussion/workshops
 
-- https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/
-- HTML naming
-- Descriptive naming
+-   https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/
+-   HTML naming
+-   Descriptive naming
 
 ---
 
@@ -659,6 +724,19 @@ When dealing with an interactive element use stateful namespaces. This could be 
 
 -   States are very temporary
 -   Ensure that States are easily noticed and understood in our HTML
+
+## Animation/transition
+
+---
+
+### WIP - This section requires discussion/workshops
+
+-   https://csstriggers.com/
+-   https://developers.google.com/web/fundamentals/performance/rendering
+
+---
+
+Try to only use transform and opacity to animate/transform properties as these are the only properties that do not require the browser to recalculate layout
 
 ## Javascript
 

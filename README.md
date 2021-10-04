@@ -354,16 +354,18 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
 }
 
 @media (min-width: 700px) {
-    // Base level (not included)
+    .foo {
+        // Base level (not included)
 
-    &__bar {
-        // Level one
+        &__bar {
+            // Level one
 
-        &:hover {
-            // Level two
+            &:hover {
+                // Level two
 
-            &.bar {
-                // Level three
+                &.bar {
+                    // Level three
+                }
             }
         }
     }

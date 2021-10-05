@@ -318,19 +318,19 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
 
 ```
 .foo {
-    .this {
-        .is {
-            .very {
-                .bad {
-                }
-            }
+  .this {
+    .is {
+      .very {
+        .bad {
         }
+      }
     }
+  }
 
-    @media (max-width: 700px) {
-        .this .is .very .bad {
-        }
+  @media (max-width: 700px) {
+    .this .is .very .bad {
     }
+  }
 }
 ```
 
@@ -338,37 +338,37 @@ Feel free to use shorthand properties for `margin`, `padding`, `border`, and `tr
 
 ```
 .foo {
-    // Base level (not included)
+  // Base level (not included)
 
-    &__bar {
-        // Level one
+  &__bar {
+    // Level one
 
-        &:hover {
-            // Level two
+    &:hover {
+      // Level two
 
-            &.bar {
-                // Level three
-            }
-        }
+      &.bar {
+        // Level three
+      }
     }
+  }
 }
 
 @media (min-width: 700px) {
-    .foo {
-        // Base level (not included)
+  .foo {
+    // Base level (not included)
 
-        &__bar {
-            // Level one
+    &__bar {
+      // Level one
 
-            &:hover {
-                // Level two
+      &:hover {
+        // Level two
 
-                &.bar {
-                    // Level three
-                }
-            }
+        &.bar {
+          // Level three
         }
+      }
     }
+  }
 }
 ```
 

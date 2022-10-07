@@ -81,17 +81,17 @@
 @* MOBILE NAV MENU *@
 <nav class="mobile-nav">
     <ul class="nav__list">
-        @if (homeNode.HasValue("mainNavigation")){
-            var treePickerNodes = homeStrong.GetPropertyValue<IEnumerable<IPublishedContent>>("mainNavigation");
-            foreach (var item in treePickerNodes)
-            {
-	  var node = Umbraco.Content(Convert.ToInt32(item.Id));
-	  if(Umbraco.MemberHasAccess(node.Id, node.Path) && node.IsVisible())
-	  {
-	     @RenderItem(node);
-	  }
-             }
-         }
+      @if (homeNode.HasValue("mainNavigation")){
+        var treePickerNodes = homeStrong.GetPropertyValue<IEnumerable<IPublishedContent>>("mainNavigation");
+        foreach (var item in treePickerNodes)
+        {
+          var node = Umbraco.Content(Convert.ToInt32(item.Id));
+          if(Umbraco.MemberHasAccess(node.Id, node.Path) && node.IsVisible())
+          {
+            @RenderItem(node);
+          }
+        }
+      }
     </ul>
 </nav>
 

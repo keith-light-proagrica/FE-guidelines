@@ -688,10 +688,10 @@ if (triggerJS_id) {
 ## Do
 
 ```
-// Use `js-` prefixed custom attributes
-<a class="foo" href="#" js-behaviour="trigger-js">Trigger JS</a>
+// Use `data-` prefixed attributes
+<a class="foo" href="#" data-behaviour="trigger-js">Trigger JS</a>
 
-const triggerJS_attribute = document.querySelectorAll('[js-behaviour="trigger-js"]');
+const triggerJS_attribute = document.querySelectorAll('[data-behaviour="trigger-js"]');
 
 if (triggerJS_attribute) {
   triggerJS_attribute.forEach((item) => {
@@ -705,20 +705,20 @@ if (triggerJS_attribute) {
 ## jQuery examples
 
 ```
-// <a href="#" js-behaviour="open-model">Open modal</a>
-$('[js-behaviour="open-model"]').on("click", function (e) {
+// <a href="#" data-behaviour="open-model">Open modal</a>
+$('[data-behaviour="open-model"]').on("click", function (e) {
   e.preventDefault();
   console.log("Fire open model");
 });
 
-// <a href="#" js-behaviour="close-model">Close modal</a>
-$('[js-behaviour="close-model"]').on("click", function (e) {
+// <a href="#" data-behaviour="close-model">Close modal</a>
+$('[data-behaviour="close-model"]').on("click", function (e) {
   e.preventDefault();
   console.log("Fire close model");
 });
 
-// <a href="#" js-behaviour="get-data-information" data-information="This is some information stored as an attribute">Data</a>
-$('[js-behaviour="get-data-information"]').on("click", function (e) {
+// <a href="#" data-behaviour="get-data-information" data-information="This is some information stored as an attribute">Data</a>
+$('[data-behaviour="get-data-information"]').on("click", function (e) {
   e.preventDefault();
   console.log($(this).data("information"));
 });
@@ -727,7 +727,6 @@ $('[js-behaviour="get-data-information"]').on("click", function (e) {
 - Separate styles from hooks
 - Don't use IDs (not reusable)
 - Easily identify JS functionality in HTML
-- A common practice is to use data- attributes as JS hooks but these are meant to store data. So try to avoid using them.
 - The use of .js- classes is also fine. Just don't bind any styles to them
 
 # General Front-end Tips - Do's
